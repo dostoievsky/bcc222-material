@@ -160,3 +160,40 @@ começar a desenvolver em Haskell utilizando
 **Happy hacking!**
 
 </div>
+
+### Material de Apoio
+
+``` bash
+# starts interpreter
+$ ghci
+```
+
+``` bash
+# loads a module into interpreter
+ghci> :load <FILE>.hs
+```
+
+``` bash
+# provide the function assignature
+ghci> :t <FUNCTION> 
+```
+
+``` bash
+# execute a function with it's input
+ghci> <FUNCTION> <INPUT>
+```
+``` bash
+# opens EDITOR in the loaded module
+ghci> :e
+```
+
+### Resumos
+
+#### Aula I
+
+A programação funcional proporciona um processo 
+que não busca a representação da solução de um 
+problema atravẽs de uma sequencia computacional. 
+Atravẽs dos seus conceitos, se estabelece uma
+estrutura lógica que se vale da formularização
+da escrita matemática. Vide exemplo um, aula um.
