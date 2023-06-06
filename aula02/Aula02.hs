@@ -1,8 +1,7 @@
 module Aula02 where
-import Prelude hiding ( replicate
-                      , null
-                      )
+import Prelude hiding ( replicate, null )
 
+-- calculates the average value of a list of intergers
 average vs = sum vs `div` length vs
 
 add1 :: Int -> Int
@@ -110,3 +109,14 @@ sumIfThree _                = 0
 size :: [a] -> Int
 size []       = 0
 size (_ : xs) = 1 + size xs
+
+xor :: Bool -> Bool -> Bool 
+xor x y
+  | x == y = False
+  | otherwise = True 
+
+existsPositive :: [Int] -> Bool
+existsPositive [] = False
+existsPositive (x : xs) 
+  | x > 0 = True
+  | otherwise = existsPositive xs
