@@ -75,3 +75,12 @@ rev xs = revAcc xs []
   where
    revAcc []       ac = ac
    revAcc (y : ys) ac = revAcc ys (y : ac)
+
+minList :: [Int] -> Int
+minList [] = error "lista vazia"
+minList a = minList' a maxBound
+  where
+    minList' []       minValue = minValue
+    minList'(x : xs) minValue 
+      | x < minValue = minList' xs x
+      | otherwise = minList' xs minValue 
