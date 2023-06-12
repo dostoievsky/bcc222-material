@@ -84,3 +84,30 @@ minList a = minList' a maxBound
     minList'(x : xs) minValue 
       | x < minValue = minList' xs x
       | otherwise = minList' xs minValue 
+      
+-- Implemente a função andList que produz a 
+-- conjunção de uma lista de booleanos fornecida 
+-- como entrada.
+-- andList :: [Bool] -> [Bool] -> [Bool]  
+
+-- Implemente a função orList que produz a 
+-- disjunção de uma lista de booleanos fornecida 
+-- como entrada.
+-- orList :: [Bool] -> [Bool] -> [Bool]  
+
+indexOf :: Int -> [Int] -> Int
+indexOf x a = indexOf' x a 0
+  where
+    indexOf' _ [] _ = -1
+    indexOf' x (y : ys) index
+      | x == y = index
+      | otherwise = indexOf' x ys index+1
+
+removeAll :: Int -> [Int] -> [Int]
+removeAll x xs = removeAll' x xs []
+  where
+   removeAll' _ [] ac = ac
+   removeAll' x (y :ys) ac 
+    | x /= y = removeAll' x ys (y : ac)
+    | otherwise = removeAll' x ys ac
+  --  = removeAll' x ys [y | y <- ys, x /= y] 
