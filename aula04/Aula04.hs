@@ -85,7 +85,6 @@ minList a = minList' a maxBound
       | x < minValue = minList' xs x
       | otherwise = minList' xs minValue 
 
-
 -- Implemente a função andList que produz a 
 -- conjunção de uma lista de booleanos fornecida 
 -- como entrada.
