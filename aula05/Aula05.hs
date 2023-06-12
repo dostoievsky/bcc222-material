@@ -53,3 +53,12 @@ averageList = map average
 
 maxAverage :: [[Float]] -> Float
 maxAverage = maximum . averageList . removeNull
+
+capitalize :: String -> String 
+capitalize xs = map toUpper xs
+
+withoutPrimes :: [Int] -> [Int]
+withoutPrimes xs = filter (not . isPrime)  xs
+  where
+    isPrime x = (length (factors x)) == 2
+    factors x = [ y | y <- [1 .. x], x `mod` y == 0 ]
