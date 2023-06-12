@@ -9,10 +9,13 @@ factorial 0 = 1
 factorial n = n * factorial (n - 1)
 
 fact :: Int -> Int
-fact n = n * factorial (n - 1)
 fact 0 = 1
+fact n = n * factorial (n - 1)
 
 greet :: String -> String
 greet name = "Hello, " ++ name ++ "!"
 
-hello name = "Hello, " ++ name ++ "!"
+fibonacci :: Int -> Int
+fibonacci 0 = 0
+fibonacci 1 = 1
+fibonacci n = fibonacci(n - 1) + fibonacci(n - 2)
