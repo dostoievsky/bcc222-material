@@ -45,6 +45,11 @@ perimeter (Rectangle _ w h) = 2 * w + 2 * h
 perimeter (Circle _ r) = 2 * pi * r
 perimeter (Triangle a b c) = dist (a,b) + dist (b,c) + dist (c,a)
 
+area :: Shape -> Float
+area (Rectangle _ w h) = w * h
+area (Circle _ r) = pi * r ^^ 2
+area (Triangle a b c) = dist (a,b) + dist (b,c) + dist (c,a)
+
 dist :: (Point, Point) -> Float
 dist ((Point x1 y1), (Point x2 y2))
   = sqrt (x11 * x11 + y11 * y11)
@@ -62,6 +67,29 @@ elemIntTree x (INode y l r)
   | x < y           = elemIntTree x l
   | x > y           = elemIntTree x r
   | otherwise       = True
+
+treeEx = INode 2  (INode 1 ILeaf ILeaf) 
+                  (INode 3 ILeaf ILeaf)
+
+treeEx2 = ILeaf
+
+treeEx3 = INode 2 (INode 1 ILeaf ILeaf) 
+                  (ILeaf)
+
+treeEx4 = INode 2 (INode 1 ILeaf 
+                                  (INode 4 ILeaf ILeaf)) 
+                  (INode 3 ILeaf ILeaf)
+
+elemLeafTree :: IntTree -> (Int, Int)
+elemLeafTree tree = elemLeafTree' tree 0 0
+
+elemLeafTree' :: IntTree -> Int -> Int -> (Int, Int)
+elemLeafTree' ILeaf elems leafs = (elems, leafs)
+elemLeafTree' (INode _ ILeaf ILeaf) elems leafs = (elems, leafs)
+elemLeafTree' (INode _ l r) elems leafs = concat (elemLeafTree' l (elems+1) (leafs+1))  
+                                                 (elemLeafTree' r (elems+1) (leafs+1))
+  where
+    concat (x, y) (z, w) = (x+z, w+y)
 
 concatIntList :: IntList -> IntList -> IntList
 concatIntList INil         ys = ys
@@ -116,3 +144,27 @@ data Client
     , surname :: Surname
     , offers  :: SendOffer
     }
+
+client1 :: Client
+client1 = Customer {
+  name = "Jose",
+  surname = "Silva",
+  offers = False
+}
+
+client2 :: Client
+client2 = Customer {
+  name = "Raimundo",
+  surname = "Pereira",
+  offers = True
+}
+
+client3 :: Client
+client3 = Customer {
+  name = "Gonzaguinha",
+  surname = "",
+  offers = True
+}
+
+sendOffer :: [Client] -> [Client]
+sendOffer clients = filter (\c -> offers c == True) clients
