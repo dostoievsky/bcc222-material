@@ -84,10 +84,10 @@ elemLeafTree :: IntTree -> (Int, Int)
 elemLeafTree tree = elemLeafTree' tree 0 0
 
 elemLeafTree' :: IntTree -> Int -> Int -> (Int, Int)
-elemLeafTree' ILeaf elems leafs = (elems, leafs)
-elemLeafTree' (INode _ ILeaf ILeaf) elems leafs = (elems, leafs)
-elemLeafTree' (INode _ l r) elems leafs = concat (elemLeafTree' l (elems+1) (leafs+1))  
-                                                 (elemLeafTree' r (elems+1) (leafs+1))
+elemLeafTree' ILeaf elems leafs = (elems, leafs)  
+elemLeafTree' (INode _ ILeaf ILeaf) elems leafs = (el ems+1, leafs+2)
+elemLeafTree' (INode _ l r) elems leafs = concat (elemLeafTree' l (elems) (leafs))  
+                                                 (elemLeafTree' r (elems) (leafs))
   where
     concat (x, y) (z, w) = (x+z, w+y)
 
